@@ -3,3 +3,11 @@
   /* border: 1px solid red; */
   /* box-shadow: 0 0 10px #719ece; */
 }
+
+.bg-desktop-light {
+  background-image: url("../images/bg-desktop-light.jpg");
+}
+
+.bg-desktop-dark {
+  background-image: url("../images/bg-desktop-dark.jpg");
+}

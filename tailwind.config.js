@@ -2,10 +2,18 @@ module.exports = {
   purge: ['./src/**/*.{js,jsx,ts,tsx}', './public/index.html'],
   darkMode: 'class', 
   theme: {
-    extend: {},
+    extend: {
+      colors:{
+        "input-dark" : "#25273C",
+        "bg-light" : "#fafafa",
+        "bg-dark" : "#181824"
+      }
+    },
   },
   variants: {
-    extend: {},
+    extend: {
+      opacity:["dark"]
+    },
   },
   plugins: [],
 }
