@@ -1,10 +1,10 @@
 export const list = [
   {
-    text: "Ayam gorng rani-san",
+    text: "Take a bath",
     status: "Completed",
   },
   {
-    text: "woyy lah nambah",
+    text: "Cook rice",
     status: "onProgress",
   },
 ];
