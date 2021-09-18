@@ -86,10 +86,7 @@ function Todo() {
                 id="#list"
                 className={
                   `flex w-full h-16 px-6 text-lg leading-tight text-gray-700 align-middle bg-white dark:bg-input-dark  shadow appearance-none focus:outline-none focus:shadow-outline dark:text-gray-300  ` +
-                  (idx === 0 ? " rounded-t-lg" : "") +
-                  (idx === list.length - 1
-                    ? " rounded-b-lg  sm:rounded-b-none"
-                    : "")
+                  (idx === 0 ? " rounded-t-lg" : "")
                 }
               >
                 <button
@@ -122,10 +119,12 @@ function Todo() {
             );
         })}
 
-        {/* additional button  */}
-        <div className="flex justify-between w-full h-16 px-6 text-sm leading-tight text-gray-700 align-middle bg-white shadow appearance-none lex dark:bg-input-dark focus:outline-none focus:shadow-outline dark:text-gray-300">
+        {/* additional information  */}
+        <div className="flex justify-between w-full h-16 px-6 text-sm leading-tight text-gray-700 align-middle bg-white rounded-b-lg shadow appearance-none dark:bg-input-dark focus:outline-none focus:shadow-outline dark:text-gray-300">
           <p className="my-auto">{list.length} items left</p>
-          <div className="flex my-auto gap-x-5">
+
+          {/* Filer Desktop */}
+          <div className="hidden my-auto gap-x-5 sm:flex">
             {options.map((item, i) => (
               <p
                 className={
@@ -137,11 +136,30 @@ function Todo() {
                   setFilter(i);
                 }}
               >
-                {item} {i} {filter}
+                {item}
               </p>
             ))}
           </div>
+
           <p className="my-auto">Clear Completed</p>
+        </div>
+
+        {/* Filter Option Mobile */}
+        <div className="flex justify-center w-full h-16 px-6 mt-5 text-sm leading-tight text-gray-700 align-middle bg-white rounded-lg shadow appearance-none gap-x-5 sm:hidden dark:bg-input-dark focus:outline-none focus:shadow-outline dark:text-gray-300 ">
+          {options.map((item, i) => (
+            <p
+              className={
+                (i == filter ? "text-green-400 " : "") +
+                "  hover:font-bold cursor-pointer my-auto"
+              }
+              key={item}
+              onClick={(e) => {
+                setFilter(i);
+              }}
+            >
+              {item}
+            </p>
+          ))}
         </div>
       </div>
     </div>
