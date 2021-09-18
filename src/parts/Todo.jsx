@@ -13,6 +13,7 @@ import { list as data } from "../components/data";
 
 function Todo() {
   const [list, setList] = useState(data);
+  const [filter, setFilter] = useState(0);
 
   const handleSubmit = (e, input) => {
     e.preventDefault();
@@ -28,10 +29,10 @@ function Todo() {
     console.log(list);
   };
 
+  // function when check button pressed
   const checked = (e) => {
     // let newList = list;
     let idx = e.currentTarget.dataset.index;
-    console.log(idx);
     let newStatus = "";
 
     if (list[idx].status == "onProgress") {
@@ -42,6 +43,18 @@ function Todo() {
 
     let newList = [...list];
     newList[idx].status = newStatus;
+
+    // console.log(newList);
+
+    setList(newList);
+  };
+
+  // function when x button pressed
+  const removeList = (e) => {
+    // let newList = list;
+    let idx = e.currentTarget.dataset.index;
+    let newList = [...list];
+    newList.splice(idx, 1);
 
     console.log(newList);
 
@@ -61,42 +74,80 @@ function Todo() {
         {/* Input */}
 
         {/* List yg ada */}
-        {list.map((item, idx) => (
-          <div
-            key={idx}
-            id="#list"
-            className={
-              `flex w-full h-16 px-6 text-lg leading-tight text-gray-700 align-middle bg-white dark:bg-input-dark  shadow appearance-none focus:outline-none focus:shadow-outline dark:text-gray-300  ` +
-              (idx === 0 ? " rounded-t-lg bg-red-5000" : "") +
-              (idx === list.length - 1 ? " rounded-b-lg bg-blue-5000" : "")
-            }
-          >
-            <button
-              data-index={idx}
-              className="w-6 h-6 my-auto mr-6"
-              onClick={(e) => checked(e)}
-            >
-              <img
-                src={item.status === "onProgress" ? Circle : Checked}
-                alt="LogoCentang"
-              />
-            </button>
-            <p className="flex flex-1 w-full my-auto align-middle border-none input">
-              {item.status === "Completed" ? (
-                <strike>{item.text}</strike>
-              ) : (
-                item.text
-              )}
-              {/* {item.text} {idx} */}
-            </p>
-            <button className="w-6 h-6 my-auto ml-6 bg-red-600">
-              <img src={Cross} alt="LogoCross" />
-            </button>
+        {list.map((item, idx) => {
+          if (
+            filter == 0 ||
+            (filter == 1 && item.status == "onProgress") ||
+            (filter == 2 && item.status == "Completed")
+          )
+            return (
+              <div
+                key={idx}
+                id="#list"
+                className={
+                  `flex w-full h-16 px-6 text-lg leading-tight text-gray-700 align-middle bg-white dark:bg-input-dark  shadow appearance-none focus:outline-none focus:shadow-outline dark:text-gray-300  ` +
+                  (idx === 0 ? " rounded-t-lg" : "") +
+                  (idx === list.length - 1
+                    ? " rounded-b-lg  sm:rounded-b-none"
+                    : "")
+                }
+              >
+                <button
+                  data-index={idx}
+                  className="w-6 h-6 my-auto mr-6"
+                  onClick={(e) => checked(e)}
+                >
+                  <img
+                    src={item.status === "onProgress" ? Circle : Checked}
+                    alt="LogoCentang"
+                  />
+                </button>
+                <p className="flex flex-1 w-full my-auto align-middle border-none input">
+                  {item.status === "Completed" ? (
+                    <strike>{item.text}</strike>
+                  ) : (
+                    item.text
+                  )}
+                  {/* {item.text} {idx} */}
+                </p>
+
+                <button
+                  className="w-6 h-6 my-auto ml-6 "
+                  data-index={idx}
+                  onClick={(e) => removeList(e)}
+                >
+                  <img src={Cross} alt="LogoCross" />
+                </button>
+              </div>
+            );
+        })}
+
+        {/* additional button  */}
+        <div className="flex justify-between w-full h-16 px-6 text-sm leading-tight text-gray-700 align-middle bg-white shadow appearance-none lex dark:bg-input-dark focus:outline-none focus:shadow-outline dark:text-gray-300">
+          <p className="my-auto">{list.length} items left</p>
+          <div className="flex my-auto gap-x-5">
+            {options.map((item, i) => (
+              <p
+                className={
+                  (i == filter ? "text-green-400 " : "") +
+                  "  hover:font-bold cursor-pointer"
+                }
+                key={item}
+                onClick={(e) => {
+                  setFilter(i);
+                }}
+              >
+                {item} {i} {filter}
+              </p>
+            ))}
           </div>
-        ))}
+          <p className="my-auto">Clear Completed</p>
+        </div>
       </div>
     </div>
   );
 }
 
 export default Todo;
+
+const options = ["All", "Active", "Completed"];

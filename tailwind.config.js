@@ -12,7 +12,8 @@ module.exports = {
   },
   variants: {
     extend: {
-      opacity:["dark"]
+      opacity:["dark"],
+      fontWeight: ['hover'],
     },
   },
   plugins: [],
