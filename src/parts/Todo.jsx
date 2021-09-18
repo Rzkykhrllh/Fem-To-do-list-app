@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import Moon from "../images/icon-moon.svg";
+
 import Circle from "../images/circle.svg";
+import Checked from "../images/circle-cheked.svg";
 import Cross from "../images/icon-cross.svg";
 
 import "./parts.css";
@@ -71,10 +73,13 @@ function Todo() {
           >
             <button
               data-index={idx}
-              className="w-6 h-6 my-auto mr-6 bg-blue-500"
+              className="w-6 h-6 my-auto mr-6"
               onClick={(e) => checked(e)}
             >
-              <img src={Circle} alt="LogoCentang" />
+              <img
+                src={item.status === "onProgress" ? Circle : Checked}
+                alt="LogoCentang"
+              />
             </button>
             <p className="flex flex-1 w-full my-auto align-middle border-none input">
               {item.status === "Completed" ? (
@@ -85,7 +90,7 @@ function Todo() {
               {/* {item.text} {idx} */}
             </p>
             <button className="w-6 h-6 my-auto ml-6 bg-red-600">
-              <img src={Cross} alt="LogoCentang" />
+              <img src={Cross} alt="LogoCross" />
             </button>
           </div>
         ))}
