@@ -1,70 +1,89 @@
-# Getting Started with Create React App
+# Frontend Mentor - Todo app solution
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is a solution to the [Todo app challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/todo-app-Su1_KokOW). Frontend Mentor challenges help you improve your coding skills by building realistic projects.
 
-## Available Scripts
+## Table of contents
 
-In the project directory, you can run:
+- [Overview](#overview)
+  - [The challenge](#the-challenge)
+  - [Screenshot](#screenshot)
+  - [Links](#links)
+- [My process](#my-process)
+  - [Built with](#built-with)
+  - [What I learned](#what-i-learned)
+  - [Continued development](#continued-development)
+  - [Useful resources](#useful-resources)
+- [Author](#author)
+- [Acknowledgments](#acknowledgments)
 
-### `npm start`
+## Overview
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### The challenge
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Users should be able to:
 
-### `npm test`
+- View the optimal layout for the app depending on their device's screen size
+- See hover states for all interactive elements on the page
+- Add new todos to the list
+- Mark todos as complete
+- Delete todos from the list
+- Filter by all/active/complete todos
+- Clear all completed todos
+- Toggle light and dark mode
+- **Bonus**: Drag and drop to reorder items on the list
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Screenshot
 
-### `npm run build`
+![Dark Mode Preview](./ss/darkmode.png)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Links
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- Live Site URL: **[To do List](https://todolist-airu.netlify.app/)**
+- Solution URL: **[Front End Mentor Submission](https://www.frontendmentor.io/solutions/to-do-list-using-reactjs-and-tailwind-vLIeTpo3N)**
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## My process
 
-### `npm run eject`
+The background image which fill the width but have the constant heigt is challenging for me. And also the background image should change in dark/light mode and also when it comes to mobile. Here is my attempt.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+```html
+<div
+  className="relative w-full h-screen bg-top bg-no-repeat bg-contain bg-bg-light dark:bg-bg-dark"
+>
+  <img alt="image light" className="absolute z-0 hidden object-cover w-full
+  dark:opacity-0 sm:block" style={{ height: "300px" }} /> /> />
+</div>
+```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+So i change the opacity to adapt with dark/light mode and i hide and show it to adapt with responsive.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### Built with
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+- [React](https://reactjs.org/) - JS library
+- [Tailwind](https://tailwindcss.com/)
 
-## Learn More
+### What I learned
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- Dark and Light mode using context
+- Set State
+- How to update an array state
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Continued development
 
-### Code Splitting
+I'm thinking to add this feature in my next development :
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+- Drag and Drop : for reordering the list
+- Local Storage : so you can save your own activity in your device
+- Animation : for better UI
 
-### Analyzing the Bundle Size
+### Useful resources
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+- [How to Implement Dark Mode with Tailwind v2.0](https://braydoncoyer.dev/blog/how-to-implement-dark-mode-with-tailwind-2/)
 
-### Making a Progressive Web App
+## Author
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+- Website - [Airu](https://airu.netlify.app/)
+- Linked In - [Rizky Khairullah](https://www.linkedin.com/in/airu/)
+- Frontend Mentor - [@Rzkykhrllh](https://www.frontendmentor.io/profile/Rzkykhrllh)
 
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+**Airu**
+Front end Developer

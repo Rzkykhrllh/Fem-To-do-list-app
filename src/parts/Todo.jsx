@@ -16,7 +16,7 @@ function Todo() {
   const handleSubmit = (e, input) => {
     e.preventDefault();
     alert(`Form is submitted ${input}`);
-    console.log(`Form is submitted`);
+    // console.log(`Form is submitted`);
 
     setList((prev) => {
       console.log("prev");
