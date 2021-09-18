@@ -1,13 +1,11 @@
 import React, { useState } from "react";
 import Moon from "../images/icon-moon.svg";
 
-import Circle from "../images/circle.svg";
-import Checked from "../images/circle-cheked.svg";
-import Cross from "../images/icon-cross.svg";
-
 import "./parts.css";
 import ThemeButton from "../components/ThemeButton";
 import InputArea from "../components/InputArea";
+import ListOfActivity from "../components/ListOfActivity";
+import Filter from "../components/InformationAndFilter";
 
 import { list as data } from "../components/data";
 
@@ -80,108 +78,22 @@ function Todo() {
           <h1 className="text-4xl font-bold text-white">T O D O</h1>
           <ThemeButton />
         </div>
-
         <InputArea handleSubmit={handleSubmit} />
-
         {/* Input */}
+        <ListOfActivity
+          list={list}
+          filter={filter}
+          checked={checked}
+          removeOne={removeOne}
+        />
 
-        {/* List yg ada */}
-        {list.map((item, idx) => {
-          if (
-            filter == 0 ||
-            (filter == 1 && item.status == "onProgress") ||
-            (filter == 2 && item.status == "Completed")
-          )
-            return (
-              <div
-                key={idx}
-                id="#list"
-                className={
-                  `flex w-full h-16 px-6 text-lg leading-tight text-gray-700 align-middle bg-white dark:bg-input-dark  shadow appearance-none focus:outline-none focus:shadow-outline dark:text-gray-300  ` +
-                  (idx === 0 ? " rounded-t-lg" : "")
-                }
-              >
-                <button
-                  data-index={idx}
-                  className="w-6 h-6 my-auto mr-6"
-                  onClick={(e) => checked(e)}
-                >
-                  <img
-                    src={item.status === "onProgress" ? Circle : Checked}
-                    alt="LogoCentang"
-                  />
-                </button>
-                <p
-                  data-index={idx}
-                  className="flex flex-1 w-full my-auto align-middle border-none cursor-pointer input hover:text-blue-600"
-                  onClick={(e) => checked(e)}
-                >
-                  {item.status === "Completed" ? (
-                    <strike>{item.text}</strike>
-                  ) : (
-                    item.text
-                  )}
-                  {/* {item.text} {idx} */}
-                </p>
-
-                <button
-                  className="w-6 h-6 my-auto ml-6 "
-                  data-index={idx}
-                  onClick={(e) => removeOne(e)}
-                >
-                  <img src={Cross} alt="LogoCross" />
-                </button>
-              </div>
-            );
-        })}
-
-        {/* additional information  */}
-        <div className="flex justify-between w-full h-16 px-6 text-sm leading-tight text-gray-700 align-middle bg-white rounded-b-lg shadow appearance-none dark:bg-input-dark focus:outline-none focus:shadow-outline dark:text-gray-300">
-          <p className="my-auto">{list.length} items left</p>
-
-          {/* Filer Desktop */}
-          <div className="hidden my-auto gap-x-5 sm:flex">
-            {options.map((item, i) => (
-              <p
-                className={
-                  (i == filter ? "text-blue-600 " : "") +
-                  "  hover:font-bold cursor-pointer"
-                }
-                key={item}
-                onClick={(e) => {
-                  setFilter(i);
-                }}
-              >
-                {item}
-              </p>
-            ))}
-          </div>
-
-          <p
-            className="my-auto cursor-pointer hover:font-bold"
-            onClick={(e) => removeCompleted()}
-          >
-            Clear Completed
-          </p>
-        </div>
-
-        {/* Filter Option Mobile */}
-        <div className="flex justify-center w-full h-16 px-6 mt-5 text-sm leading-tight text-gray-700 align-middle bg-white rounded-lg shadow appearance-none gap-x-5 sm:hidden dark:bg-input-dark focus:outline-none focus:shadow-outline dark:text-gray-300 ">
-          {options.map((item, i) => (
-            <p
-              className={
-                (i == filter ? "text-blue-600 " : "") +
-                "  hover:font-bold cursor-pointer my-auto"
-              }
-              key={item}
-              onClick={(e) => {
-                setFilter(i);
-              }}
-            >
-              {item}
-            </p>
-          ))}
-        </div>
+        <Filter
+          list={list}
+          options={options}
+          removeCompleted={removeCompleted}
+          filter={filter}
+          setFilter={setFilter}
+        />
       </div>
     </div>
   );
