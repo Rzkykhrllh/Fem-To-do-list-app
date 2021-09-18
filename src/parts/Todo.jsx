@@ -26,6 +26,26 @@ function Todo() {
     console.log(list);
   };
 
+  const checked = (e) => {
+    // let newList = list;
+    let idx = e.currentTarget.dataset.index;
+    console.log(idx);
+    let newStatus = "";
+
+    if (list[idx].status == "onProgress") {
+      newStatus = "Completed";
+    } else {
+      newStatus = "onProgress";
+    }
+
+    let newList = [...list];
+    newList[idx].status = newStatus;
+
+    console.log(newList);
+
+    setList(newList);
+  };
+
   return (
     <div className="relative z-10 flex max-w-xl px-10 mx-auto bg-yellow-3000 md:mx-auto">
       <div className="w-full mt-20 text-left ">
@@ -44,29 +64,28 @@ function Todo() {
             key={idx}
             id="#list"
             className={
-              `flex w-full h-16 px-6 text-lg leading-tight text-gray-700 align-middle bg-white dark:bg-input-dark  shadow appearance-none focus:outline-none focus:shadow-outline` +
+              `flex w-full h-16 px-6 text-lg leading-tight text-gray-700 align-middle bg-white dark:bg-input-dark  shadow appearance-none focus:outline-none focus:shadow-outline dark:text-gray-300  ` +
               (idx === 0 ? " rounded-t-lg bg-red-5000" : "") +
               (idx === list.length - 1 ? " rounded-b-lg bg-blue-5000" : "")
             }
           >
-            <button>
-              <img
-                src={Circle}
-                alt="LogoCentang"
-                className="flex my-auto mr-6 bg"
-              />
+            <button
+              data-index={idx}
+              className="w-6 h-6 my-auto mr-6 bg-blue-500"
+              onClick={(e) => checked(e)}
+            >
+              <img src={Circle} alt="LogoCentang" />
             </button>
-
             <p className="flex flex-1 w-full my-auto align-middle border-none input">
-              {item.text} {list.length}
+              {item.status === "Completed" ? (
+                <strike>{item.text}</strike>
+              ) : (
+                item.text
+              )}
+              {/* {item.text} {idx} */}
             </p>
-
-            <button>
-              <img
-                src={Cross}
-                alt="LogoCentang"
-                className="flex my-auto ml-6 bg"
-              />
+            <button className="w-6 h-6 my-auto ml-6 bg-red-600">
+              <img src={Cross} alt="LogoCentang" />
             </button>
           </div>
         ))}

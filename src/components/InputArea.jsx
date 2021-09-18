@@ -14,14 +14,22 @@ function InputArea({ handleSubmit }) {
         <img src={Circle} alt="LogoCentang" className="mt-5 mr-6" />
       </div>
 
-      <form className="flex-1" onSubmit={(e) => handleSubmit(e, input)}>
+      <form
+        className="flex-1"
+        onSubmit={(e) => {
+          {
+            handleSubmit(e, input);
+            setInput("");
+          }
+        }}
+      >
         <input
-          className="w-full h-16 border-none input dark:bg-input-dark"
+          className="w-full h-16 border-none input dark:bg-input-dark dark:text-gray-300"
           id="username"
           type="text"
           value={input}
           onChange={(e) => setInput(e.target.value)}
-          placeholder="Username"
+          placeholder="What to do ?"
         />
       </form>
     </div>
