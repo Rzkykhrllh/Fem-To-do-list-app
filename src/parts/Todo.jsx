@@ -50,13 +50,25 @@ function Todo() {
   };
 
   // function when x button pressed
-  const removeList = (e) => {
+  const removeOne = (e) => {
     // let newList = list;
     let idx = e.currentTarget.dataset.index;
     let newList = [...list];
     newList.splice(idx, 1);
 
     console.log(newList);
+
+    setList(newList);
+  };
+
+  const removeCompleted = () => {
+    let newList = [...list];
+
+    for (let i = 0; i < newList.length; i++) {
+      if (newList[i].status === "Completed") {
+        newList.splice(i, 1);
+      }
+    }
 
     setList(newList);
   };
@@ -99,7 +111,11 @@ function Todo() {
                     alt="LogoCentang"
                   />
                 </button>
-                <p className="flex flex-1 w-full my-auto align-middle border-none input">
+                <p
+                  data-index={idx}
+                  className="flex flex-1 w-full my-auto align-middle border-none cursor-pointer input hover:text-blue-600"
+                  onClick={(e) => checked(e)}
+                >
                   {item.status === "Completed" ? (
                     <strike>{item.text}</strike>
                   ) : (
@@ -111,7 +127,7 @@ function Todo() {
                 <button
                   className="w-6 h-6 my-auto ml-6 "
                   data-index={idx}
-                  onClick={(e) => removeList(e)}
+                  onClick={(e) => removeOne(e)}
                 >
                   <img src={Cross} alt="LogoCross" />
                 </button>
@@ -128,7 +144,7 @@ function Todo() {
             {options.map((item, i) => (
               <p
                 className={
-                  (i == filter ? "text-green-400 " : "") +
+                  (i == filter ? "text-blue-600 " : "") +
                   "  hover:font-bold cursor-pointer"
                 }
                 key={item}
@@ -141,7 +157,12 @@ function Todo() {
             ))}
           </div>
 
-          <p className="my-auto">Clear Completed</p>
+          <p
+            className="my-auto cursor-pointer hover:font-bold"
+            onClick={(e) => removeCompleted()}
+          >
+            Clear Completed
+          </p>
         </div>
 
         {/* Filter Option Mobile */}
@@ -149,7 +170,7 @@ function Todo() {
           {options.map((item, i) => (
             <p
               className={
-                (i == filter ? "text-green-400 " : "") +
+                (i == filter ? "text-blue-600 " : "") +
                 "  hover:font-bold cursor-pointer my-auto"
               }
               key={item}
