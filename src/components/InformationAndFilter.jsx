@@ -18,7 +18,7 @@ function InformationAndFilter({
           {options.map((item, i) => (
             <p
               className={
-                (i == filter ? "text-blue-600 " : "") +
+                (i === filter ? "text-blue-600 " : "") +
                 "  hover:font-bold cursor-pointer"
               }
               key={item}
@@ -43,7 +43,7 @@ function InformationAndFilter({
         {options.map((item, i) => (
           <p
             className={
-              (i == filter ? "text-blue-600 " : "") +
+              (i === filter ? "text-blue-600 " : "") +
               "  hover:font-bold cursor-pointer my-auto"
             }
             key={item}

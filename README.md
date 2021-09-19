@@ -59,7 +59,7 @@ So i change the opacity to adapt with dark/light mode and i hide and show it to 
 ### Built with
 
 - [React](https://reactjs.org/) - JS library
-- [Tailwind](https://tailwindcss.com/)
+- [Tailwind](https://tailwindcss.com/) - CSS Framework
 
 ### What I learned
 
@@ -78,6 +78,7 @@ I'm thinking to add this feature in my next development :
 ### Useful resources
 
 - [How to Implement Dark Mode with Tailwind v2.0](https://braydoncoyer.dev/blog/how-to-implement-dark-mode-with-tailwind-2/)
+- [React Drag and Drop]()
 
 ## Author
 

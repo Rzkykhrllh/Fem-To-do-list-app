@@ -1,29 +1,11 @@
-import React, { useContext } from "react";
+import React from "react";
 import Todo from "../parts/Todo";
 
 import "./pages.css";
-import { ThemeContext } from "../components/ThemeContext";
-
-import Temp from "../parts/Temp";
 
 function HomePage() {
-  const { theme, setTheme } = useContext(ThemeContext);
-
   return (
-    <div
-      className="relative w-full min-h-screen bg-top bg-no-repeat bg-contain bg-bg-light dark:bg-bg-dark"
-      // style={
-      //     ? {
-      //         backgroundImage: 'url("/images/bg-desktop-light.jpg")',
-      //       }
-      //     : {
-      //         backgroundImage: 'url("/images/bg-desktop-light.jpg")',
-      //       }) +
-      //   {
-      //     backgroundSize: "auto 300px",
-      //   }
-      // }
-    >
+    <div className="relative w-full min-h-screen bg-top bg-no-repeat bg-contain bg-bg-light dark:bg-bg-dark">
       {/* desktop light */}
       <img
         alt="image light"
@@ -55,7 +37,6 @@ function HomePage() {
       />
 
       <Todo />
-      {/* <Temp /> */}
     </div>
   );
 }

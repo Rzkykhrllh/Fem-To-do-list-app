@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import Moon from "../images/icon-moon.svg";
 
 import "./parts.css";
 import ThemeButton from "../components/ThemeButton";
@@ -47,7 +46,7 @@ function Todo() {
     let idx = e.currentTarget.dataset.index;
     let newStatus = "";
 
-    if (list[idx].status == "onProgress") {
+    if (list[idx].status === "onProgress") {
       newStatus = "Completed";
     } else {
       newStatus = "onProgress";
@@ -77,7 +76,7 @@ function Todo() {
     let newList = [];
 
     for (let i = 0; i < list.length; i++) {
-      if (list[i].status == "onProgress") {
+      if (list[i].status === "onProgress") {
         newList.push(list[i]);
       }
     }

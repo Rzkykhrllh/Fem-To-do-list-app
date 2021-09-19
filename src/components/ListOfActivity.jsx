@@ -12,9 +12,9 @@ function ListOfActivity({ list, filter, checked, removeOne, handleDrag }) {
           <div {...provided.droppableProps} ref={provided.innerRef}>
             {list.map((item, idx) => {
               if (
-                filter == 0 ||
-                (filter == 1 && item.status == "onProgress") ||
-                (filter == 2 && item.status == "Completed")
+                filter === 0 ||
+                (filter === 1 && item.status === "onProgress") ||
+                (filter === 2 && item.status === "Completed")
               )
                 return (
                   <Draggable key={item.id} draggableId={item.id} index={idx}>

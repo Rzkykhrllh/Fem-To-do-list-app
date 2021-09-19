@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useContext } from "react";
 import Moon from "../images/icon-moon.svg";
 import Sun from "../images/icon-sun.svg";
 // import useMediaQuery from "@material-ui/core/useMediaQuery";
