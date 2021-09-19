@@ -11,19 +11,26 @@ import { list as data } from "../components/data";
 
 function Todo() {
   const [list, setList] = useState(
-    JSON.parse(localStorage.getItem("activity"))
+    JSON.parse(localStorage.getItem("activity")) || data
   );
   const [filter, setFilter] = useState(0);
 
+  const [currentId, setCurrent] = useState(1);
+
   const handleSubmit = (e, input) => {
     e.preventDefault();
-    alert(`Form is submitted ${input}`);
-    // console.log(`Form is submitted`);
+
+    if (input === "") {
+      return;
+    }
 
     setList((prev) => {
       console.log("prev");
       console.log(prev);
-      return [...prev, { text: input, status: "onProgress" }];
+      return [
+        ...prev,
+        { text: input, status: "onProgress", id: `${currentId + 1}-${input}` },
+      ];
     });
 
     console.log(list);
@@ -31,6 +38,7 @@ function Todo() {
 
   useEffect(() => {
     localStorage.setItem("activity", JSON.stringify(list));
+    setCurrent(currentId + 1);
   }, [list]);
 
   // function when check button pressed
@@ -66,19 +74,30 @@ function Todo() {
   };
 
   const removeCompleted = () => {
-    let newList = [...list];
+    let newList = [];
 
-    for (let i = 0; i < newList.length; i++) {
-      if (newList[i].status === "Completed") {
-        newList.splice(i, 1);
+    for (let i = 0; i < list.length; i++) {
+      if (list[i].status == "onProgress") {
+        newList.push(list[i]);
       }
     }
 
     setList(newList);
   };
 
+  function handleDrag(result) {
+    // console.log(result);
+    if (!result.destination) return;
+
+    const items = Array.from(list);
+    const [reordererItem] = items.splice(result.source.index, 1);
+    items.splice(result.destination.index, 0, reordererItem);
+
+    setList(items);
+  }
+
   return (
-    <div className="relative z-10 flex max-w-xl px-10 mx-auto bg-yellow-3000 md:mx-auto">
+    <div className="relative z-10 flex h-auto max-w-xl px-10 mx-auto bg-yellow-3000 md:mx-auto">
       <div className="w-full mt-20 text-left ">
         <div className="flex justify-between align-middle">
           <h1 className="text-4xl font-bold text-white">T O D O</h1>
@@ -91,8 +110,9 @@ function Todo() {
           filter={filter}
           checked={checked}
           removeOne={removeOne}
+          handleDrag={handleDrag}
         />
-        {console.log(list)}
+        {/* {console.log(list)} */}
         <Filter
           list={list}
           options={options}

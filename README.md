@@ -66,13 +66,13 @@ So i change the opacity to adapt with dark/light mode and i hide and show it to 
 - Dark and Light mode using context
 - Set State
 - How to update an array state
+- Drag and Drop using React DnD
+- Local Storage
 
 ### Continued development
 
 I'm thinking to add this feature in my next development :
 
-- Drag and Drop : for reordering the list
-- Local Storage : so you can save your own activity in your device
 - Animation : for better UI
 
 ### Useful resources

@@ -3,14 +3,16 @@ import Todo from "../parts/Todo";
 
 import "./pages.css";
 import { ThemeContext } from "../components/ThemeContext";
+
+import Temp from "../parts/Temp";
+
 function HomePage() {
   const { theme, setTheme } = useContext(ThemeContext);
 
   return (
     <div
-      className="relative w-full h-screen bg-top bg-no-repeat bg-contain bg-bg-light dark:bg-bg-dark"
+      className="relative w-full min-h-screen bg-top bg-no-repeat bg-contain bg-bg-light dark:bg-bg-dark"
       // style={
-      //   (theme === "light"
       //     ? {
       //         backgroundImage: 'url("/images/bg-desktop-light.jpg")',
       //       }
@@ -24,7 +26,6 @@ function HomePage() {
     >
       {/* desktop light */}
       <img
-        src="/images/bg-desktop-light.jpg"
         alt="image light"
         className="absolute z-0 hidden object-cover w-full dark:opacity-0 sm:block"
         style={{ height: "300px" }}
@@ -54,6 +55,7 @@ function HomePage() {
       />
 
       <Todo />
+      {/* <Temp /> */}
     </div>
   );
 }
