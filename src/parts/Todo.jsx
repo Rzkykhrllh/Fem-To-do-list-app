@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Moon from "../images/icon-moon.svg";
 
 import "./parts.css";
@@ -10,7 +10,9 @@ import Filter from "../components/InformationAndFilter";
 import { list as data } from "../components/data";
 
 function Todo() {
-  const [list, setList] = useState(data);
+  const [list, setList] = useState(
+    JSON.parse(localStorage.getItem("activity"))
+  );
   const [filter, setFilter] = useState(0);
 
   const handleSubmit = (e, input) => {
@@ -26,6 +28,10 @@ function Todo() {
 
     console.log(list);
   };
+
+  useEffect(() => {
+    localStorage.setItem("activity", JSON.stringify(list));
+  }, [list]);
 
   // function when check button pressed
   const checked = (e) => {
@@ -86,7 +92,7 @@ function Todo() {
           checked={checked}
           removeOne={removeOne}
         />
-
+        {console.log(list)}
         <Filter
           list={list}
           options={options}

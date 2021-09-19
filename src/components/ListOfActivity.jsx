@@ -6,7 +6,7 @@ import Cross from "../images/icon-cross.svg";
 function ListOfActivity({ list, filter, checked, removeOne }) {
   return (
     <>
-      {/* List yg ada */}
+      {console.log(list)}
       {list.map((item, idx) => {
         if (
           filter == 0 ||
