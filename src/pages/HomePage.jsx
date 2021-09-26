@@ -8,6 +8,7 @@ function HomePage() {
     <div className="relative w-full min-h-screen bg-top bg-no-repeat bg-contain bg-bg-light dark:bg-bg-dark">
       {/* desktop light */}
       <img
+        src="/images/bg-desktop-light.jpg"
         alt="image light"
         className="absolute z-0 hidden object-cover w-full dark:opacity-0 sm:block"
         style={{ height: "300px" }}
